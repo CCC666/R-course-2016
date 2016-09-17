@@ -1,0 +1,53 @@
+---
+title: "Version control and Rstudio (Version 1.1)"
+author: "Qiang Shen"
+date: "Sept.16,2016"
+output: pdf_document
+---
+
+![github logo:Octocat](github-logo.jpg)
+    
+  Here I give a brief introduction about how to use version control in Rstudio.
+  
+
+1. Register a github account at https://github.com/. For example, my account is _johnsonzhj_ and my email is johnsonzhj@gmail.com. You can skip this step if you already have an account available.
+
+2. In **Rstudio**, click Tools-->Global Options-->Git/SVN-->**Create RSA key**-->Create. Then in Options interface of Git/SVN, click **View public key**, copy the **whole** content accordingly (with Ctrl+C as a shortcut). Then in an internet browser(eg. Chrome), login in your github account. In **dropdown menu**, click settings-->SSH keys-->add SSH key and paste the key you copied previously to **key** dialogue box, add a name you prefer to title dialogue box click add key.
+
+
+3. Download software **git** (not github) from <https://git-scm.com/> and install it accordingly once available.
+
+4. Back to Rstudio, In menu tools-->Global option-->Git/SVN: Git executable dialogue box, change the direcotry to C:\\program and files\\git\\bin\\git\.exe. (this is for Windows only. In Mac, the default **/usr/bin/git** is already fine). 
+
+
+5. In github, you should set up a new repository under menu **repositories**. For example, a new repository called _rdata_. Now you'll get a new url like this: <https://github.com/your_account_name/rdata>.
+
+6. In Rstudio, click Tool-->shell and type following script with your own email and user name.
+
+```
+       git config --global user.email "your email address"
+       git config --global user.name "your user name"
+       git config --list
+       git push -u origin master
+```
+
+7. In Rstudio, click file-->new project-->version control-->git copy the new generated url in step 5 to "Repository url" together with a suffix .git (you can also choose to click **dropdown** of **Clone or download** option in the github repository, choose **use HTTPS** and copy the link directly) and create a name for the folder and the local directory accordingly.
+
+
+8. Now you should be able to see a **Git** tab at the middle top of the Rstudio interface. Try to Click "commit" in Git (you can add commit information) and then click Push Branch the file. Then it **succeed**!
+
+9. I will demonstrate how to use the **commit**,**pull** and **push** in Rstudio during the course.
+
+###  Please contact johnsonzhj@gmail.com if there is any comments from you, feedback are welcome, thanks.
+
+
+* Reference:
+ 1. <http://rmarkdown.rstudio.com/>
+ 
+ 2. <http://www.r-bloggers.com/rstudio-and-github/>
+ 
+ 3. <http://www.molecularecologist.com/2013/11/using-github-with-r-and-rstudio/>
+ 
+ 4. <https://github.com/STAT545-UBC/Discussion/issues/93>
+ 
+ 
