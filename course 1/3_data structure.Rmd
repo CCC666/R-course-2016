@@ -1,7 +1,7 @@
 ---
 title: "Data structure"
 author: "Qiang Shen"
-date: "Sept.16,2016"
+date: "Sept.22,2016"
 output: beamer_presentation
 ---
 
@@ -66,6 +66,11 @@ assign('s',7)
 ```
 
 ---
+
+## variable
+
+![assignment](plot/assignment.png)
+
 
 ## variable name
 
@@ -221,7 +226,7 @@ a!=b   ###if contional statement
 ## Vector
 
 - the **core data structure** in R.
-- container of data objects, but only for one class of data
+- container of data objects, but **only for one class** of data
 - **vectorization**
 ```{r}
 a<-c(1,2,3) ###no row/column
@@ -408,32 +413,47 @@ a[1,2,3]
 ```
 
 ---
+
+
 ## data frame
 
 - data frame
 - combination of vectors and factors.
 - attributes: nrow;ncol;dim
+
 ```{r, eval=FALSE}
 city<-c('bj','sh','gz','sz')
 age<-c(22,34,34,24)
 sex<-c('M','F','M','F')
 people<-data.frame(city,age,sex)
-people
-people[2,3]
-people[,3]
+people[2,3];people[,3]
 people$age
 people$age>30
 people[people$age>30,]
+```
+
+---
 
 
+## data frame
+```{r,eval=F}
+city<-c('bj','sh','gz','sz')
+age<-c(22,34,34,24)
+sex<-c('M','F','M','F')
+people<-data.frame(city,age,sex)
 dim(iris)
 ncol(iris);nrow(iris)
 rownames(people)<-letters[1:4]
 rownames(people)<-c(1,4,5,8)
-people
 rownames(people)<-NULL ##set back to generic index
 colnames(people)[3]
+```
 
+---
+
+## data frame
+
+```{r,eval=F}
 head(iris);tail(iris)
 str(iris)
 iris[c(50:100),c(1:2),]
@@ -450,7 +470,11 @@ class(iris[['Sepal.Length']])###reduced
 ###comparison with stata
 # plot(Sepal.Length,Petal.Length)
 plot(iris$Sepal.Length,iris$Petal.Length)
+```
 
+
+## data frame
+```{r,eval=F}
 attach(iris)
 plot(Sepal.Length,Petal.Length)
 detach(iris)
@@ -500,6 +524,7 @@ figure$counts
 ```
 
 ---
+
 ## The importance of list
  - 3. Using output as input.
 ```{r,fig.align = "center",echo=F}
@@ -513,25 +538,26 @@ results$coefficients[2,1]*10
 
 ---
 
---- &twocol
-## The importance of list
-*** =left
-```{r, echo=F}
-with(mtcars,plot(wt,mpg,col='red',type='p',lwd=3,main="WT",cex=2))
-lmfit1<-lm(mpg~wt,data=mtcars)
-abline(lmfit1,lwd=2)
-```
 
-*** =right
-```{r, echo=F}
-with(mtcars,plot(hp,mpg,col='red',type='p',lwd=3,main='HP',cex=2))
-lmfit2<-lm(mpg~hp,data=mtcars)
-abline(lmfit2,lwd=2)
-summary(lmfit1)
-summary(lmfit2)
-cat(paste('wt coeffient:',round(summary(lmfit1)$coe[2,1],2)),paste('hp coeffient:', round(summary(lmfit2)$coe[2,1],2)),sep='\n')
+<!-- --- &twocol -->
+<!-- ## The importance of list -->
+<!-- *** =left -->
+<!-- ```{r, echo=F} -->
+<!-- with(mtcars,plot(wt,mpg,col='red',type='p',lwd=3,main="WT",cex=2)) -->
+<!-- lmfit1<-lm(mpg~wt,data=mtcars) -->
+<!-- abline(lmfit1,lwd=2) -->
+<!-- ``` -->
 
-```
+<!-- *** =right -->
+<!-- ```{r, echo=F} -->
+<!-- with(mtcars,plot(hp,mpg,col='red',type='p',lwd=3,main='HP',cex=2)) -->
+<!-- lmfit2<-lm(mpg~hp,data=mtcars) -->
+<!-- abline(lmfit2,lwd=2) -->
+<!-- summary(lmfit1) -->
+<!-- summary(lmfit2) -->
+<!-- cat(paste('wt coeffient:',round(summary(lmfit1)$coe[2,1],2)),paste('hp coeffient:', round(summary(lmfit2)$coe[2,1],2)),sep='\n') -->
+
+<!-- ``` -->
 
 ---
 
@@ -576,6 +602,7 @@ status)
 patientdata
 patientdata$gender<-with(patientdata,factor(gender,
           levels=c(1,2),labels=c('male','female')))
+patientdata
 str(patientdata)
 summary(patientdata)
 
@@ -650,7 +677,7 @@ vy[!is.na(vy)]
 ## common errors:
    - lower case and upper case difference.
    - forget (): eg. help(lm)
-   - mix [] and ()
+   - confound [] with ()
    - forget ""  
    - forget "c"" for vector generation.
    - use "\" in Windows OS for directory 

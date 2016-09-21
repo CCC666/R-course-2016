@@ -1,7 +1,7 @@
 ---
 title: "A brief introduction to R and Rstudio"
 author: "Qiang Shen"
-date: "Sept. 16,2016"
+date: "Sept. 22,2016"
 output: beamer_presentation
 ---
 
@@ -35,9 +35,23 @@ output: beamer_presentation
 - menu:Tools-> Global options
 - appearance (tomorrow night bright) 
 - default directory (preference->default woring directory)
+- default text encoding:utf-8
 - svn/git (details about version control later)
 
+```{r,eval=F}
+Sys.getlocale()
+Sys.setlocale(category = "LC_ALL", locale = "zh_cn.utf-8")
+```
+
 ---
+
+
+## Rstudio interface
+
+![interface](plot/rstudio.png)
+
+---
+
 
 ## Rstudio interface
 
@@ -47,6 +61,15 @@ output: beamer_presentation
 >- plot,packages
 
 ---
+
+## Hello world!
+
+```{r}
+'Hello world!'
+print('Hello world!')
+cat ('Hello world!')
+```
+
 
 ## help
 ```{r,eval=F}
@@ -59,17 +82,8 @@ output: beamer_presentation
 
 - English
 - www.google.com
-- http://www.rseek.org/
 - http://stackoverflow.com/tags
 - http://www.r-bloggers.com/
-
----
-
-## Workspace
-```{r}
-search() #loaded package
-```
-![basic packages](plot/basics.png)
 
 ---
 
@@ -79,6 +93,17 @@ Packages are collections of R functions, data, and compiled code in a well-defin
 - https://mirrors.ustc.edu.cn/CRAN/
 
 ---
+
+## Workspace
+```{r}
+# library()
+search() #loaded package
+```
+![basic packages](plot/basics.png)
+
+---
+
+
 
 ## Workspace
 ```{r,eval=F}
