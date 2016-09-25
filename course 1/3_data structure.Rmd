@@ -5,7 +5,6 @@ date: "Sept.22,2016"
 output: beamer_presentation
 ---
 
-
 ## Contents
 
 - 1. a brief introduction of R
@@ -272,11 +271,12 @@ nchar(temp)  #vectorization
 
 ```{r, eval=FALSE}
 c(T,F,T,T)  
+
 age<-c(23,21,20,24,18,15,25) ##legal age of marriage
 age>20
 price<-c(3,6,5,7,4,11,14)
 price>5
-# age[age>20] ## []
+age[age>20] ## []
 ```
 
 ---
