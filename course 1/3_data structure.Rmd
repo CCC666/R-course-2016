@@ -1,7 +1,7 @@
 ---
 title: "Data structure"
 author: "Qiang Shen"
-date: "Sept.22,2016"
+date: "Sept.29,2016"
 output: beamer_presentation
 ---
 
@@ -680,7 +680,7 @@ vy[!is.na(vy)]
    - confound [] with ()
    - forget ""  
    - forget "c"" for vector generation.
-   - use "\" in Windows OS for directory 
+   - use `\` in Windows OS for directory 
    - myvar==3 or myvar=="Jack" but not myvar==NA, should be.is.na()
    - forget to load packages needed.
 

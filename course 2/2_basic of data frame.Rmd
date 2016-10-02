@@ -6,7 +6,6 @@ output: beamer_presentation
 
 ---
 
-
 ## Data arrangement
 
 - basics of data arrangement
@@ -18,7 +17,7 @@ output: beamer_presentation
 
 - gender different of leadership
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 manager <- c(1, 2, 3, 4, 5)
 date <- c("10/24/08", "10/28/08", "10/1/08", "10/12/08", "5/1/09")
 gender <- c("M", "F", "F", "M", "F")
@@ -30,7 +29,8 @@ q4 <- c(5, 5, 5, NA, 2)
 q5 <- c(5, 5, NA, 3, 1)
 leadership <- data.frame(manager, date, gender, age,q1, q2, q3, q4, q5, stringsAsFactors = FALSE)
 head(leadership)
-
+# sapply(ls(),get)
+rm(list = ls()[ls()!='leadership'])
 ```
 
 ---
@@ -38,8 +38,17 @@ head(leadership)
 
 ## Creating new variables
 ```{r}
-sum_q12<-(leadership$q1+leadership$q2)/2
-sum_q12
+q1+q2
+q12<-leadership$q1+leadership$q2
+leadership
+leadership$q12<-leadership$q1+leadership$q2
+leadership
+leadership$q12<-with(leadership,q1+q2)
+leadership<-within(leadership,{q12=q1+q2})
+leadership<-within(leadership,{
+  q12=q1+q2
+  q_mean=(q1+q2)/2
+  })
 leadership
 ```
 
