@@ -1,7 +1,7 @@
 ---
 title: "R language and data analysis: apply family"
 author: "Qiang Shen"
-date: "Sept.29,2016"
+date: "Oct.8,2016"
 output: beamer_presentation
 ---
 
@@ -17,7 +17,12 @@ pairs of operands at once.
 - Vectorization is a particular form of how parallelism is achieved.
 
 ---
-  
+
+```{r setup, include=FALSE}
+options(digits=2)
+```
+
+---  
 ## examples of vectorization
 - vector extraction: V[1:10] 
 - vector assignment: V[1:10] <- seq(1,10) 
@@ -142,7 +147,7 @@ apply(x, 2, quantile, probs = c(0.25, 0.75))
 ---
 
 ## `lapply` :start from an example
-- a simple function
+`lapply` Loop over a list and evaluate a function on each element
 ```{r,eval=F}
 ##user-defined function.
   func<-function(x){
@@ -288,7 +293,7 @@ sapply(x, mean)
 
 ## tapply
 `tapply` is used to apply a function over subsets of a vector.
-
+- apply, sapply/lapply vs. tapply
 ```{r}
 str(tapply)
 ```
@@ -324,9 +329,38 @@ tapply(x, f, range)
 
 ## tapply example
 
+- iris flower dataset:Stata,python,R
+- <https://en.wikipedia.org/wiki/Iris_flower_data_set>
+
+![iris](pic/irises.png)
+
+---
+
+## tapply example
+![iris](pic/Petal-sepal.jpg)
+
+---
+
+## tapply example
+- vs. pivot table in excel
+```{r}
+str(iris)
+head(iris)
+```
+
+---
+
+
+## tapply example
+
 - vs. pivot table in excel
 ```{r}
 tapply(iris[,1], iris$Species, mean)
+t(sapply(iris[,1:4],function(x) tapply(x, iris$Species, mean,na.rm=T)))
+# myfun<-function(x) {
+#   tapply(x, iris$Species, mean,na.rm=T)
+# }
+# sapply(iris[,1:3],myfun)
 ```
 
 ---
@@ -363,15 +397,6 @@ lapply(split(x, f), mean)
 ```
 
 ---
-  
-## Splitting a Data Frame
-```{r}
-s <- split(iris, iris$Species)
-sapply(s, function(x) colMeans(x[, 1:4],na.rm=T))
-# sapply(s, function(x) sapply((x[, 1:4]), mean,na.rm=T))
-```
-
----
 
 ## Splitting on More than One Level  
 ```{r}
@@ -400,6 +425,18 @@ str(split(x, list(f1, f2), drop = TRUE))
 ```
 
 ---
+
+  
+## Splitting a Data Frame
+```{r}
+s <- split(iris, iris$Species)
+# str(s)
+sapply(s, function(x) colMeans(x[, 1:4],na.rm=T))
+# sapply(s, function(x) sapply((x[, 1:4]), mean,na.rm=T))
+```
+
+---
+
 
 ## Looping on the Command Line
 
